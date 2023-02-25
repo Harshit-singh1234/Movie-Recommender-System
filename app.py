@@ -1,5 +1,5 @@
 from urllib import response
-
+import webbrowser
 import streamlit as st
 import  pickle
 import  pandas as pd
@@ -17,7 +17,7 @@ def fetch_poster(movie_id):
 def recommend(movie):
     movie_index = movies[movies ['title'] == movie].index[0]
     distances = similarity[movie_index]
-    movies_list=sorted(list(enumerate(distances)), reverse=True, key=lambda x: x[1])[1:6]
+    movies_list=sorted(list(enumerate(distances)), reverse=True, key=lambda x: x[1])[1:7]
     recommended_movies=[]
     recommended_movies_posters=[]
     for i in movies_list :
@@ -29,10 +29,12 @@ def recommend(movie):
     return recommended_movies,recommended_movies_posters
 
 
+
 movies_dict=pickle.load(open('movie_dict.pkl','rb'))
 movies=pd.DataFrame(movies_dict)
 
 similarity=pickle.load(open('similarity.pkl','rb'))
+
 
 st.title('Movie Recommender System')
 selected_movie_name=st.selectbox(
@@ -40,20 +42,48 @@ selected_movie_name=st.selectbox(
     movies['title'].values)
 if st.button('Recommend Me' ):
     names,posters=recommend(selected_movie_name)
-    col1, col2, col3, col4, col5 = st.columns(5)
+    col1, col2, col3, col4, col5,col6 = st.columns(6)
+    st.balloons()
     with col1:
+        movie_name_str = " ".join(names[0])
+        youtube_url =f"https://www.youtube.com/results?search_query="+movie_name_str.replace(" ", "")+"full_movie"
         st.text(names[0])
         st.image(posters[0])
+        #print(youtube_url)
+        st.write("**Movie** [link](%s)" % youtube_url)
     with col2:
+        movie_name_str = " ".join(names[1])
+        youtube_url = f"https://www.youtube.com/results?search_query=" + movie_name_str.replace(" ", "") + "full_movie"
         st.text(names[1])
         st.image(posters[1])
+        #print(youtube_url)
+        st.write("**Movie** [link](%s)" % youtube_url)
     with col3:
+        movie_name_str = " ".join(names[2])
+        youtube_url = f"https://www.youtube.com/results?search_query=" + movie_name_str.replace(" ", "") + "full_movie"
         st.text(names[2])
         st.image(posters[2])
+        print(youtube_url)
+        st.write("**Movie** [link](%s)" % youtube_url)
     with col4:
+        movie_name_str = " ".join(names[3])
+        youtube_url = f"https://www.youtube.com/results?search_query=" + movie_name_str.replace(" ", "") + "full_movie"
         st.text(names[3])
         st.image(posters[3])
+        #print(youtube_url)
+        st.write("**Movie** [link](%s)" % youtube_url)
     with col5:
+        movie_name_str = " ".join(names[4])
+        youtube_url = f"https://www.youtube.com/results?search_query=" + movie_name_str.replace(" ", "") + "full_movie"
         st.text(names[4])
         st.image(posters[4])
+        #print(youtube_url)
+        st.write("**Movie** [link](%s)" % youtube_url)
+    with col6:
+        movie_name_str = " ".join(names[5])
+        youtube_url = f"https://www.youtube.com/results?search_query=" + movie_name_str.replace(" ", "") + "full_movie"
+        st.text(names[5])
+        st.image(posters[5])
+        #print(youtube_url)
+        st.write("**Movie** [link](%s)" % youtube_url)
 
