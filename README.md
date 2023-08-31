@@ -1,13 +1,13 @@
 <p align='center'><img height='400' src = 'https://user-images.githubusercontent.com/31500911/143410521-b2653b16-0ee9-46e7-9c5c-7a8b2262a3d1.png'></p>
 <br>
 <!-- ABOUT THE PROJECT -->
-## About The Project
+<h2> About The Project </h2>
 
 At some point each one of us must have wondered where all the recommendations that Netflix, Amazon, Google give us, come from. We often rate products on the internet and all the preferences we express and data we share (explicitly or not), are used by recommender systems to generate, in fact, recommendations. 
 
 Recommender systems usually make use of either or both **collaborative filtering** and **content-based filtering** (also known as the personality-based approach),as well as other systems such as knowledge-based systems. I will use movies as an example (because if I could, I would be watching movies/tv shows all the time), but keep in mind that this type of process can be applied for any kind of product you watch, listen to, buy, and so on.
 
-Recommender systems usually make use of either or both collaborative filtering and content-based filtering (also known as the personality-based approach),as well as other systems such as knowledge-based systems.
+
 
 <br>
 <p>In this project I have built a content based movie recommender system. The algorithm recommends products that are similar to the ones that a user has liked in the past. This similarity (generally cosine similarity) is computed from the data we have about the items as well as the user’s past preferences. </p>
